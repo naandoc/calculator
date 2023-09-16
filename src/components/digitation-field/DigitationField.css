@@ -1,4 +1,15 @@
+.typing-field {
+  height: 1.8rem;
+}
+
 input {
+  border-radius: 8px;
+  text-align: right;
+  padding: 0 0.4rem;
+  font-size: 18px;
   width: 100%;
   height: 100%;
+}
+input::placeholder {
+  color: #000;
 }
