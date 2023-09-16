@@ -1,13 +1,15 @@
 import { type ReactElement } from 'react';
+import DigitationField from './components/digitation-field/DigitationField';
 import './App.css';
 
 function App(): ReactElement {
-    return (
-        // eslint-disable-next-line react/react-in-jsx-scope
-        <>
-            <h1>Calculator</h1>
-        </>
-    );
+  return (
+    <>
+      <section>
+        <DigitationField />
+      </section>
+    </>
+  );
 }
 
 export default App;

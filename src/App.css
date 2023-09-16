@@ -1,10 +1,23 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
 }
 
 body {
-    background-color: rgb(4, 4, 32);
-    color: #fff;
+  background-color: rgb(4, 4, 32);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  height: 80vh;
+}
+
+section {
+  width: 40%;
+  min-width: 400px;
+  border: solid 1px #3a3838;
+  border-radius: 8px;
+  padding: 0.4rem 0.3rem;
+  margin-left: 10rem;
 }
