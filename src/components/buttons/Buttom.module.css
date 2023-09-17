@@ -4,17 +4,20 @@ li {
   color: #000;
   font-weight: 500;
   background-color: #f3eeee;
-  height: 1.5rem;
-  width: 3.5rem;
+  height: 2rem;
+  width: 100%;
   border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   user-select: none;
-  margin: 8px; /* será removida */
 }
 
 .bgWhite {
-  background-color: #817e7e;
+  background-color: #9e9fa1;
+}
+
+.bgBlue {
+  background-color: #4285f4;
 }

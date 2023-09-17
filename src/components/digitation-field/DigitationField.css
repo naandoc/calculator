@@ -1,12 +1,12 @@
 .typing-field {
-  height: 1.8rem;
+  height: 2.4rem;
 }
 
 input {
   border-radius: 8px;
   text-align: right;
   padding: 0 0.4rem;
-  font-size: 18px;
+  font-size: 22px;
   width: 100%;
   height: 100%;
 }
