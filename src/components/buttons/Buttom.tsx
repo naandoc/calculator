@@ -4,7 +4,7 @@ import styles from './Buttom.module.css';
 interface ButtomProps {
   colorBg: string;
   digitButtom: string;
-  digitEvent: (e: React.MouseEvent) => void;
+  digitEvent?: (e: React.MouseEvent) => void;
 }
 
 const Buttom = ({
