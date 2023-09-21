@@ -1,6 +1,9 @@
 import { useContext, type ReactElement } from 'react';
 import Buttom from '../buttons/Buttom';
 import { DigitationContext } from '../../App';
+
+import { evaluate } from 'mathjs';
+
 import './NumericKeyboard.css';
 
 interface inputRefType {
@@ -9,7 +12,7 @@ interface inputRefType {
 
 const NumericKeyboard = ({ inputRef }: inputRefType): ReactElement => {
   // context
-  const { setValueInput } = useContext(DigitationContext);
+  const { valueInput, setValueInput } = useContext(DigitationContext);
 
   const handleEventDigit = (e: React.MouseEvent): void => {
     const targetEl = e.target as HTMLLIElement;
@@ -17,6 +20,16 @@ const NumericKeyboard = ({ inputRef }: inputRefType): ReactElement => {
 
     if (inputRef.current !== null) {
       inputRef.current.focus();
+    }
+  };
+
+  const calculate = (): void => {
+    try {
+      const result = evaluate(valueInput);
+      setValueInput(Number(result));
+    } catch (error) {
+      setValueInput('');
+      throw new Error('Operação inválida! \nDigite um valor válido');
     }
   };
 
@@ -34,14 +47,14 @@ const NumericKeyboard = ({ inputRef }: inputRefType): ReactElement => {
       <Buttom digitEvent={handleEventDigit} colorBg="" digitButtom="4" />
       <Buttom digitEvent={handleEventDigit} colorBg="" digitButtom="5" />
       <Buttom digitEvent={handleEventDigit} colorBg="" digitButtom="6" />
-      <Buttom digitEvent={handleEventDigit} colorBg="bgWhite" digitButtom="x" />
+      <Buttom digitEvent={handleEventDigit} colorBg="bgWhite" digitButtom="*" />
       <Buttom digitEvent={handleEventDigit} colorBg="" digitButtom="1" />
       <Buttom digitEvent={handleEventDigit} colorBg="" digitButtom="2" />
       <Buttom digitEvent={handleEventDigit} colorBg="" digitButtom="3" />
       <Buttom digitEvent={handleEventDigit} colorBg="bgWhite" digitButtom="-" />
       <Buttom digitEvent={handleEventDigit} colorBg="" digitButtom="0" />
       <Buttom digitEvent={handleEventDigit} colorBg="" digitButtom="." />
-      <Buttom colorBg="bgBlue" digitButtom="=" />
+      <Buttom digitEvent={calculate} colorBg="bgBlue" digitButtom="=" />
       <Buttom digitEvent={handleEventDigit} colorBg="bgWhite" digitButtom="+" />
     </div>
   );
