@@ -23,6 +23,7 @@ const NumericKeyboard = ({ inputRef }: inputRefType): ReactElement => {
     }
   };
 
+  // function to calculate the entered value
   const calculate = (): void => {
     try {
       const result = evaluate(valueInput);
@@ -33,13 +34,18 @@ const NumericKeyboard = ({ inputRef }: inputRefType): ReactElement => {
     }
   };
 
+  // function to clear the entered value
+  const clearInput = (): void => {
+    setValueInput('');
+  };
+
   return (
     <div className="key-board">
       <Buttom digitEvent={handleEventDigit} colorBg="bgWhite" digitButtom="(" />
       <Buttom digitEvent={handleEventDigit} colorBg="bgWhite" digitButtom=")" />
 
       <Buttom digitEvent={handleEventDigit} colorBg="bgWhite" digitButtom="%" />
-      <Buttom colorBg="bgWhite" digitButtom="AC" />
+      <Buttom digitEvent={clearInput} colorBg="bgWhite" digitButtom="AC" />
       <Buttom digitEvent={handleEventDigit} colorBg="" digitButtom="7" />
       <Buttom digitEvent={handleEventDigit} colorBg="" digitButtom="8" />
       <Buttom digitEvent={handleEventDigit} colorBg="" digitButtom="9" />
@@ -55,7 +61,11 @@ const NumericKeyboard = ({ inputRef }: inputRefType): ReactElement => {
       <Buttom digitEvent={handleEventDigit} colorBg="" digitButtom="0" />
       <Buttom digitEvent={handleEventDigit} colorBg="" digitButtom="." />
       <Buttom digitEvent={calculate} colorBg="bgBlue" digitButtom="=" />
-      <Buttom digitEvent={handleEventDigit} colorBg="bgWhite" digitButtom="+" />
+      <Buttom
+        digitEvent={handleEventDigit}
+        colorBg="bgWhiteBtnSpace"
+        digitButtom="+"
+      />
     </div>
   );
 };
