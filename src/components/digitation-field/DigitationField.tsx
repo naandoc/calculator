@@ -1,6 +1,9 @@
 import React, { type ReactElement, useContext } from 'react';
-import './DigitationField.css';
 import { DigitationContext } from '../../App';
+
+import { evaluate } from 'mathjs';
+
+import './DigitationField.css';
 
 interface inputRefType {
   inputRef: React.RefObject<HTMLInputElement>;
@@ -20,11 +23,24 @@ const DigitationField = ({ inputRef }: inputRefType): ReactElement => {
     }
   };
 
+  const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>): void => {
+    if (e.key === 'Enter') {
+      try {
+        const result = evaluate(valueInput);
+        setValueInput(Number(result));
+      } catch (error) {
+        setValueInput('');
+        throw new Error('Operação inválida! \nDigite um valor válido');
+      }
+    }
+  };
+
   return (
     <div className="typing-field">
       <input
         ref={inputRef}
         onChange={handleInputChange}
+        onKeyUp={handleKeyUp}
         type="text"
         value={valueInput}
         placeholder="0"
